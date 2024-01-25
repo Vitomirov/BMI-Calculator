@@ -1,18 +1,18 @@
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
-public class InputHandler {
+public class InputValidator {
     private Scanner scanner;
 
-    public InputHandler() {
+    public InputValidator() {
         this.scanner = new Scanner(System.in);
     }
 
-    public int readPositiveInteger(String inputText, String inputType) {
+    public int inputValidation(String inputText, String inputType) {
         int userInput = 0;
-        boolean validInput = false;
+       boolean validInput = false;
 
-        while (!validInput) {
+        do  {
             try {
                 System.out.print(inputText);
                 userInput = scanner.nextInt();
@@ -24,11 +24,16 @@ public class InputHandler {
                 }
             } catch (InputMismatchException e) {
                 System.out.println("Invalid input. Please enter a " + inputType + ".");
+            }finally {
                 scanner.nextLine(); // Clear the buffer
-            }
-        }
 
-        return userInput;
+                if(userInput<0){ //If number is negative, repeat the loop
+                    validInput = false;
+                }
+            }
+        } while (!validInput);
+
+         return userInput;
     }
 
     public void closeScanner() {
