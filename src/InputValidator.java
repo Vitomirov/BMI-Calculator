@@ -1,14 +1,14 @@
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
-public class InputHandler {
+public class InputValidator {
     private Scanner scanner;
 
-    public InputHandler() {
+    public InputValidator() {
         this.scanner = new Scanner(System.in);
     }
 
-    public int readPositiveInteger(String inputText, String inputType) {
+    public int inputValidation(String inputText, String inputType) {
         int userInput = 0;
         boolean validInput = false;
 

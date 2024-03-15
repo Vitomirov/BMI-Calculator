@@ -1,7 +1,6 @@
 public class Main {
     public static void main(String[] args) {
 
-
         // Create an instance of InputValidator for handling user input
         InputValidator inputValidator = new InputValidator();
 
@@ -20,8 +19,7 @@ public class Main {
             userWeight = inputValidator.inputValidation(
                     "Enter weight in kg: ", "weight value in kg");
             if (userWeight > 200) {
-                System.out.println("Max available weight for calculation is 200");
-            }
+            }  System.out.println("Max available weight for calculation is 200");
             }while (userWeight < 0 || userWeight > 200) ;
 
             // Create an instance of Assessment

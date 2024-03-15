@@ -1,8 +1,8 @@
-public class BMIInterpreter extends Calculator {
+public class Assessment extends Calculator {
 
     private double bmi;
 
-    public BMIInterpreter(int height, int weight) {
+    public Assessment(int height, int weight) {
         super(height, weight);
         this.bmi = calculateBMI();
     }
