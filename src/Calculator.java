@@ -2,6 +2,10 @@ public class Calculator {
     private int height;
     private int weight;
 
+    public void setHeight(int height) {
+        this.height = height;
+    }
+
     public Calculator(int height, int weight) {
         this.height = height;
         this.weight = weight;

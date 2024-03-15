@@ -1,21 +1,21 @@
-public class Assessment extends Calculator {
+public class BMIInterpreter extends Calculator {
 
     private double bmi;
 
-    public Assessment(int height, int weight) {
+    public BMIInterpreter(int height, int weight) {
         super(height, weight);
         this.bmi = calculateBMI();
     }
 
     public String getBMIStatus() {
         if (bmi < 18.5) {
-            return "underweight.";
+            return "Underweight.";
         } else if (bmi < 25) {
-            return "normal.";
+            return "Normal.";
         } else if (bmi < 30) {
-            return "overweight.";
+            return "Overweight.";
         } else {
-            return "obese.";
+            return "Obese.";
         }
     }
 
