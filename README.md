@@ -1,24 +1,39 @@
-BMI Calculator - Introduction
+BMI Calculator
 
-Welcome to my first Java project – the BMI Calculator. This basic console application showcases my foundational Java programming skills, focusing on simplicity and functionality.
+This BMI (Body Mass Index) Calculator is a simple Java application with a Swing GUI interface.
+It allows users to input their height in centimeters and weight in kilograms, calculates the BMI,
+and displays the result along with the corresponding BMI category.
 
-Features:
+Features
 
-    Console Interaction: Input weight and height through the console.
-    BMI Calculation: Provides BMI index and corresponding category.
-    User-Friendly Output: Clear presentation of results.
+    Input validation for height (0 - 250 cm) and weight (0 - 200 kg).
+    Calculation of BMI using the formula: BMI = weight / (height * height).
+    Display of BMI result and BMI category (Underweight, Normal, Overweight, or Obese).
+    Reset button to clear input fields.
+    Exit button to close the application.
 
-How to Use:
+Usage
 
-    Clone or download the project.
-    Compile and run the Java application.
-    Input weight and height as prompted.
-    Get BMI results and category.
+    Enter your height in centimeters in the "Enter height in cm" field.
+    Enter your weight in kilograms in the "Enter weight in kg" field.
+    Click the "Calculate" button to calculate your BMI.
+    View the BMI result and category in the corresponding labels.
+    Use the "Reset" button to clear the input fields for new calculations.
+    To exit the application, click the "Exit" button.
 
-Why BMI Calculator?
-This project represents my initial exploration of Java, emphasizing core logic and console interaction. Future plans may include a graphical interface and enhanced features.
+Installation
 
-Contribution and Future Plans:
-Open to feedback and suggestions for improvement. Future iterations may involve UI enhancements and expanded functionality.
+Clone the repository:
+git clone https://github.com/Vitomirov/bmi-calculator.git
 
-Feel free to reach out with any questions or suggestions. Excited to discuss this project and my journey in Java development.
+
+Compile the Java files:
+javac *.java
+
+Run the application
+java Main
+
+
+Contributing
+
+Contributions are welcome! If you have any suggestions, bug fixes, or improvements, please open an issue or create a pull request.
