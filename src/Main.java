@@ -1,35 +1,98 @@
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
 public class Main {
+    private static JLabel resultLabel;
+    private static JLabel categoryLabel;
+
     public static void main(String[] args) {
+        // Create the main frame
+        JFrame frame = new JFrame("BMI Calculator");
+        frame.setSize(700, 200);
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.setLayout(new GridLayout(5, 2, 10, 10));
 
-        // Create an instance of InputValidator for handling user input
-        InputValidator inputValidator = new InputValidator();
+        // Height Input
+        JLabel heightLabel = new JLabel("Enter height in cm:");
+        JTextField heightField = new JTextField();
+        frame.add(heightLabel);
+        frame.add(heightField);
 
-        // User input for height and weight
-        int userHeight;
-        do {
-            userHeight = inputValidator.inputValidation(
-                    "Enter height in cm: ", "height value in cm");
-            if (userHeight > 250) {
-                System.out.println("Max available height for calculation is 250");
+        // Weight Input
+        JLabel weightLabel = new JLabel("Enter weight in kg:");
+        JTextField weightField = new JTextField();
+        frame.add(weightLabel);
+        frame.add(weightField);
+
+        // Result and Category Labels
+        resultLabel = new JLabel("BMI Result: ");
+        categoryLabel = new JLabel("Category: ");
+        frame.add(resultLabel);
+        frame.add(categoryLabel);
+
+        // Calculate Button
+        JButton calculateButton = new JButton("Calculate");
+        calculateButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                // Get user input from text fields
+                String heightText = heightField.getText();
+                String weightText = weightField.getText();
+
+                try {
+                    // Parse input to integers
+                    int userHeight = Integer.parseInt(heightText);
+                    int userWeight = Integer.parseInt(weightText);
+
+                    if (userHeight < 0 || userHeight > 250) {
+                        JOptionPane.showMessageDialog(frame, "Height should be between 0 and 250 cm.");
+                        return;
+                    }
+
+                    if (userWeight < 0 || userWeight > 200) {
+                        JOptionPane.showMessageDialog(frame, "Weight should be between 0 and 200 kg.");
+                        return;
+                    }
+
+                    // Create an instance of Assessment
+                    Assessment user = new Assessment(userHeight, userWeight);
+
+                    // Display the calculated BMI result and Category
+                    resultLabel.setText("BMI Result: " + user.calculateBMI());
+                    categoryLabel.setText("Category: " + user.getBMIStatus());
+                } catch (NumberFormatException ex) {
+                    JOptionPane.showMessageDialog(frame, "Invalid input. Please enter valid numbers.");
+                }
             }
-        } while (userHeight < 0 || userHeight > 250);
+        });
+        frame.add(calculateButton);
 
-        int userWeight;
-        do {
-            userWeight = inputValidator.inputValidation(
-                    "Enter weight in kg: ", "weight value in kg");
-            if (userWeight > 200) {
-            }  System.out.println("Max available weight for calculation is 200");
-            }while (userWeight < 0 || userWeight > 200) ;
+        // Reset Button
+        JButton resetButton = new JButton("Reset");
+        resetButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                heightField.setText("");
+                weightField.setText("");
+                resultLabel.setText("BMI Result: ");
+                categoryLabel.setText("Category: ");
+            }
+        });
+        frame.add(resetButton);
 
-            // Create an instance of Assessment
-            Assessment user = new Assessment(userHeight, userWeight);
+        //Exit Button
 
-            // Display the calculated BMI result and Category
-            user.printResult();
-            user.printCategory();
+        JButton exitButton = new JButton("Exit");
+        exitButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                System.exit(0);
+            }
+        });
+        frame.add(exitButton);
 
-            // Close the scanner to release resources
-            inputValidator.closeScanner();
-        }
+        frame.setVisible(true);
     }
+}
