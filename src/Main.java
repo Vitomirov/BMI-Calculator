@@ -46,13 +46,13 @@ public class Main {
                     int userHeight = Integer.parseInt(heightText);
                     int userWeight = Integer.parseInt(weightText);
 
-                    if (userHeight < 0 || userHeight > 250) {
-                        JOptionPane.showMessageDialog(frame, "Height should be between 0 and 250 cm.");
+                    if (userHeight <= 0 || userHeight > 250) {
+                        JOptionPane.showMessageDialog(frame, "Height should be between 1 and 250 cm.");
                         return;
                     }
 
-                    if (userWeight < 0 || userWeight > 200) {
-                        JOptionPane.showMessageDialog(frame, "Weight should be between 0 and 200 kg.");
+                    if (userWeight <= 0 || userWeight > 200) {
+                        JOptionPane.showMessageDialog(frame, "Weight should be between 1 and 200 kg.");
                         return;
                     }
 
@@ -82,8 +82,7 @@ public class Main {
         });
         frame.add(resetButton);
 
-        //Exit Button
-
+        // Exit Button
         JButton exitButton = new JButton("Exit");
         exitButton.addActionListener(new ActionListener() {
             @Override

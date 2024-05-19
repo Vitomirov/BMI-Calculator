@@ -5,6 +5,7 @@ public class InputValidator {
     private Scanner scanner;
 
     public InputValidator() {
+
         this.scanner = new Scanner(System.in);
     }
 
