@@ -19,10 +19,5 @@ public class Assessment extends Calculator {
         }
     }
 
-    public void printCategory() {
-        StringBuilder resultMessage = new StringBuilder("Your BMI index shows that you are ");
-        resultMessage.append(getBMIStatus());
-        System.out.println(resultMessage.toString());
-    }
 }
 
